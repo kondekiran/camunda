@@ -1,3 +1,9 @@
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import javax.servlet.Filter;
+import org.camunda.bpm.engine.rest.security.auth.ProcessEngineAuthenticationFilter;
+
 @Configuration
 public class CamundaSecurityFilter {
 
