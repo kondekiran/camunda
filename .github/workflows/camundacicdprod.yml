@@ -1,4 +1,4 @@
-name: Camunda CI/CD to deploy on Prod Oregon 
+name: Camunda CI/CD to deploy 
 
 on: workflow_dispatch
   
