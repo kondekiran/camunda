@@ -1,0 +1,49 @@
+camunda.bpm.admin-user:
+  id: prcamunda
+  password: Pr@metheu$789
+camunda.bpm:
+  webapp:
+    csrf:
+      enable-same-site-cookie: true
+      same-site-cookie-option: STRICT
+    header-security:
+      hsts-disabled: false
+  authorization.enabled: true
+  generic-properties.properties:
+    deserialization-type-validation-enabled: true
+    deserialization-allowed-packages:
+    deserialization-allowed-classes:
+    enable-password-policy: true
+  run:
+    auth.enabled: true
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      url: jdbc:postgresql://db-camunda-community7.ctegeqbib2kt.us-west-2.rds.amazonaws.com:5432/postgres
+      username: camundausr
+      password: prometheus123$
+
+  hikari:
+        jdbc-url: jdbc:postgresql://db-camunda-community7.ctegeqbib2kt.us-west-2.rds.amazonaws.com:5432/postgres
+        username: camundausr
+        password: prometheus123$
+        driver-class-name: org.postgresql.Driver
+        pool-name: CAMUNDA-HIKARI-POOL
+        idle-timeout: 3000
+        minimum-idle: 30
+        maximum-pool-size: 10
+        connection-timeout: 2000
+        connection-test-query: select 1
+        transaction-isolation: TRANSACTION_READ_COMMITTED
+
+camunda:
+  bpm:
+    enabled: true
+    database:
+      type: postgres
+
+  database:
+    schema-update: true
