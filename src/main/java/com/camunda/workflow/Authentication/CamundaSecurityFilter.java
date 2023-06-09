@@ -1,4 +1,3 @@
-
 @Configuration
 public class CamundaSecurityFilter {
 
