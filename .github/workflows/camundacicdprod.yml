@@ -27,5 +27,5 @@ jobs:
           application_name: ${{ vars.CAMUNDA_EB_APP_NAME_PROD }}
           environment_name: ${{ vars.CAMUNDA_EB_ENV_NAME_PROD }}
           version_label: ${{ github.ref_name }}-${{ github.run_number }}
-          region: ${{ vars.AWS_REGION_ACTIVE }}
+          region: us-east-1
           deployment_package: camunda-project-1.0.0-SNAPSHOT.jar
