@@ -1,4 +1,4 @@
-name: Camunda CI/CD to deploy 
+name: Camunda CI/CD 
 
 on: workflow_dispatch
   
