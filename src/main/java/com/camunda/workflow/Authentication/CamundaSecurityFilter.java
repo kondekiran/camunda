@@ -7,22 +7,22 @@ import org.camunda.bpm.engine.rest.security.auth.ProcessEngineAuthenticationFilt
 public class CamundaSecurityConfig
 {
 
-	@Bean
-	public FilterRegistrationBean<ProcessEngineAuthenticationFilter> processEngineAuthenticationFilter()
-	{
-		FilterRegistrationBean<ProcessEngineAuthenticationFilter> registration = new FilterRegistrationBean<>();
-		registration.setName("camunda-auth");
-		registration.setFilter(this.getProcessEngineAuthenticationFilter());
-		registration
-			.addInitParameter("authentication-provider", HttpBasicAuthenticationProvider.class.getName());
+@Bean
+public FilterRegistrationBean<ProcessEngineAuthenticationFilter> processEngineAuthenticationFilter()
+{
+ FilterRegistrationBean<ProcessEngineAuthenticationFilter> registration = new FilterRegistrationBean<>();
+ registration.setName("camunda-auth");
+ registration.setFilter(this.getProcessEngineAuthenticationFilter());
+ registration
+ .addInitParameter("authentication-provider", HttpBasicAuthenticationProvider.class.getName());
 		registration.addUrlPatterns("/engine-rest/*");
 		return registration;
 	}
 
-	@Bean
-	public ProcessEngineAuthenticationFilter getProcessEngineAuthenticationFilter()
-	{
-		return new ProcessEngineAuthenticationFilter();
+@Bean
+public ProcessEngineAuthenticationFilter getProcessEngineAuthenticationFilter()
+{
+return new ProcessEngineAuthenticationFilter();
 	}
 }
 
