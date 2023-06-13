@@ -7,19 +7,30 @@ import org.camunda.bpm.engine.rest.security.auth.ProcessEngineAuthenticationFilt
 @Configuration
 public class CamundaSecurityFilter {
 
+  
+public class CamundaSecurityFilter {
+
+    @Value('${camunda.rest-api.jwt.secret-path}')
+    String jwtSecretPath;
+
+    @Value('${camunda.rest-api.jwt.validator-class}')
+    String jwtValidatorClass;
+
     @Bean
-    public FilterRegistrationBean<Filter> processEngineAuthenticationFilter() {
-        FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<>();
-        registration.setName("camunda-auth");
+    public FilterRegistrationBean processEngineAuthenticationFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setName("camunda-jwt-auth");
+        registration.addInitParameter('authentication-provider', 'io.digitalstate.camunda.authentication.jwt.AuthenticationFilterJwt');
+        registration.addInitParameter('jwt-secret-path', jwtSecretPath);
+        registration.addInitParameter('jwt-validator', jwtValidatorClass);
+        registration.addUrlPatterns("/rest/*");
         registration.setFilter(getProcessEngineAuthenticationFilter());
-        registration.addInitParameter("authentication-provider",
-                "org.camunda.bpm.engine.rest.security.auth.impl.HttpBasicAuthenticationProvider");
-        registration.addUrlPatterns("/*");
         return registration;
     }
 
     @Bean
     public Filter getProcessEngineAuthenticationFilter() {
-        return new ProcessEngineAuthenticationFilter();
+        return new ProcessEngineAuthenticationFilterJwt();
     }
 }
+
