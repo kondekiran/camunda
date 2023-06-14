@@ -14,7 +14,7 @@ public class CamundaSecurityFilter {
         registration.setName("camunda-auth");
         registration.setFilter(getProcessEngineAuthenticationFilter());
         registration.addInitParameter("authentication-provider", "org.camunda.bpm.engine.rest.security.auth.impl.HttpBasicAuthenticationProvider");
-        registration.addUrlPatterns("/engine/default/user"); // Specify the endpoint where authentication is required
+        registration.addUrlPatterns("/engine/prcamunda/user"); // Specify the endpoint where authentication is required
         return registration;
     }
 
