@@ -1,4 +1,4 @@
-name: Camunda CI/CD deploy oriwni=on
+name: Camunda CI/CD deploy orinion
 
 on: workflow_dispatch
   
